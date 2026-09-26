@@ -1,5 +1,5 @@
 import { test as base, expect } from '@playwright/test';
-import { OrangeHRMLoginPage } from './pages/orangehrm-login.page';
+import { OrangeHRMLoginPage } from '../tests/pages/orangehrm-login.page';
 
 type Fixtures = {
   loginPage: OrangeHRMLoginPage;
@@ -11,4 +11,4 @@ export const test = base.extend<Fixtures>({
   },
 });
 
-export { expect };
+export { expect, OrangeHRMLoginPage };

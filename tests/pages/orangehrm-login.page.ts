@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { expect, type Page, type TestInfo } from '@playwright/test';
+import { orangeHrmUrls } from '../../config/urls';
 
 const testData = JSON.parse(
   readFileSync(path.resolve(__dirname, '../../data/testData.json'), 'utf8')
@@ -9,14 +10,10 @@ const testData = JSON.parse(
 const { demoUserName, demoPassword } = testData.orangeHrm;
 
 export class OrangeHRMLoginPage {
-  static readonly loginUrl = 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login';
-  static readonly resetUrl = 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode';
-  static readonly dashboardUrl = 'https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index';
-
   constructor(private readonly page: Page) {}
 
   async openLogin() {
-    await this.page.goto(OrangeHRMLoginPage.loginUrl, { waitUntil: 'domcontentloaded' });
+    await this.page.goto(orangeHrmUrls.login, { waitUntil: 'domcontentloaded' });
   }
 
   async assertLoginForm() {

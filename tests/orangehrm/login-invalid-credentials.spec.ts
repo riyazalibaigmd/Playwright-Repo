@@ -1,7 +1,7 @@
-import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { test, expect } from '../fixtures';
-import { OrangeHRMLoginPage } from '../pages/orangehrm-login.page';
+import { readFileSync } from 'node:fs';
+import { expect, test } from '../../fixtures/testSetup';
+import { orangeHrmUrls } from '../../config/urls';
 
 const testData = JSON.parse(
   readFileSync(path.resolve(__dirname, '../../data/testData.json'), 'utf8')
@@ -17,7 +17,7 @@ test.describe('OrangeHRM Login Page', () => {
     await loginPage.submitLogin();
     await loginPage.assertInvalidCredentials();
 
-    await expect(page).toHaveURL(OrangeHRMLoginPage.loginUrl);
+    await expect(page).toHaveURL(orangeHrmUrls.login);
     await loginPage.assertLoginForm();
     await loginPage.attachFinalState(testInfo);
   });

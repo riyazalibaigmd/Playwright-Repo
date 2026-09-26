@@ -28,7 +28,7 @@ Specs NEVER touch the page directly: no `page.locator`, `page.getByRole`, `page.
   (`expect(page).toHaveURL`, `page.waitForURL`).
 If a method you need doesn't exist, add it to the right page object — never inline the
   interaction in a spec.
-Specs import `test`/`expect` from `tests/fixtures.ts`, never from `@playwright/test`.
+Specs import `test`/`expect` from `fixtures/testSetup.ts`, never from `@playwright/test`.
   Fixtures hand specs ready-made page objects: `homePage`, `cohortPage`, `privacyPage`.
 The homepage is one `HomePage` composing section components: `homePage.nav`,
   `homePage.newsletter`, `homePage.deepShift`, `homePage.contact`.
