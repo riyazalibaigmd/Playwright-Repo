@@ -1,5 +1,26 @@
 Test architecture — binding rules
 
+Use folder structure like
+├── tests/
+│   ├── login/
+│   ├── dashboard/
+│   ├── timesheet/
+│   └── ...
+├── pages/
+│   ├── LoginPage.ts
+│   ├── DashboardPage.ts
+│   └── ...
+├── utils/
+│   ├── commonUtils.ts
+│   ├── dateUtils.ts
+│   └── ...
+├── fixtures/
+│   └── testSetup.ts
+├── data/
+│   └── testData.json
+├── playwright.config.ts
+└── tsconfig.json
+
 E2E specs live in `tests/`; page objects live in `tests/pages/` and own ALL locators.
 Specs NEVER touch the page directly: no `page.locator`, `page.getByRole`, `page.click`,
   `page.fill`, `page.goto` in a spec file. Every interaction and assertion goes through a
@@ -22,3 +43,4 @@ EXCEPTION: `tests/visual.spec.js` is pixel-snapshot comparison, not user flows. 
   keeps its raw `page.*` calls, its `.js` extension, and its exact filename — the
   baseline directory `tests/visual.spec.js-snapshots/` is derived from that filename.
   Never rename, convert, or refactor it.
+

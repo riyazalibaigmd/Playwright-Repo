@@ -1,4 +1,12 @@
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import { expect, type Page, type TestInfo } from '@playwright/test';
+
+const testData = JSON.parse(
+  readFileSync(path.resolve(__dirname, '../../data/testData.json'), 'utf8')
+);
+
+const { demoUserName, demoPassword } = testData.orangeHrm;
 
 export class OrangeHRMLoginPage {
   static readonly loginUrl = 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login';
@@ -17,9 +25,9 @@ export class OrangeHRMLoginPage {
     await expect(this.page.getByRole('button', { name: 'Login' })).toBeVisible();
   }
 
-  async assertDemoCredentials() {
-    await expect(this.page.getByText('Username : Admin')).toBeVisible();
-    await expect(this.page.getByText('Password : admin123')).toBeVisible();
+  async assertDemoCredentials(username = demoUserName, password = demoPassword) {
+    await expect(this.page.getByText(`Username : ${username}`)).toBeVisible();
+    await expect(this.page.getByText(`Password : ${password}`)).toBeVisible();
   }
 
   async assertCredentialsEmpty() {

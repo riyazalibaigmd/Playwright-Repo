@@ -1,0 +1,9 @@
+{
+  "orangeHrm": {
+    "demoUserName": "Admin",
+    "demoPassword": "admin123",
+    "invalidUserName": "invalid-user",
+    "invalidPassword": "invalid-password",
+    "anyPassword": "any-password"
+  }
+}
