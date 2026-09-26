@@ -18,6 +18,8 @@ Use folder structure like
 │   └── testSetup.ts
 ├── data/
 │   └── testData.json
+├── config/
+│   └── env.ts
 ├── playwright.config.ts
 └── tsconfig.json
 
